@@ -1,3 +1,7 @@
+cmake-build-debug
+.idea
+
+# Github CMake Template
 CMakeLists.txt.user
 CMakeCache.txt
 CMakeFiles
