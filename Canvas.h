@@ -15,7 +15,7 @@ public:
     Canvas(unsigned int width, unsigned int height);
     ~Canvas();
 
-    void putPixel(const unsigned int x, const unsigned int y, const TGAColor& color);
+    void putPixel(unsigned int x, unsigned int y, const TGAColor& color);
     void saveImage(const std::string &filename);
     void saveImage(const char *filename);
 private:

@@ -31,20 +31,20 @@ struct TGAImage {
     enum Format { GRAYSCALE=1, RGB=3, RGBA=4 };
 
     TGAImage() = default;
-    TGAImage(const int w, const int h, const int bpp);
+    TGAImage(const unsigned int w, const unsigned int h, const int bpp);
     bool  read_tga_file(const std::string filename);
     bool write_tga_file(const std::string filename) const;
     void flip_horizontally();
     void flip_vertically();
-    TGAColor get(const int x, const int y) const;
+    TGAColor get(const unsigned int x, const unsigned int y) const;
     void set(const unsigned int x, const unsigned int y, const TGAColor &c);
-    int width()  const;
-    int height() const;
+    unsigned int width()  const;
+    unsigned int height() const;
 private:
     bool load_rle_data(std::ifstream &in);
 
-    int w = 0;
-    int h = 0;
+    unsigned int w = 0;
+    unsigned int h = 0;
     std::uint8_t bpp = 0;
     std::vector<std::uint8_t> data = {};
 };

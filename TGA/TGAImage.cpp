@@ -6,12 +6,15 @@
 #include <cstring>
 #include "TGAImage.h"
 
-TGAImage::TGAImage(const int w, const int h, const int bpp) : w(w), h(h), bpp(bpp), data(w*h*bpp, 0) {}
+TGAImage::TGAImage(const unsigned int w, const unsigned int h, const int bpp) : w(w), h(h), bpp(bpp), data(w*h*bpp, 0) {}
 
-TGAColor TGAImage::get(const int x, const int y) const {
-    if (!data.size() || x<0 || y<0 || x>=w || y>=h)
+TGAColor TGAImage::get(const unsigned int x, const unsigned int y) const {
+    if ( data.empty() || x >= w || y >= h) {
         return {};
+    }
+
     TGAColor ret = {0, 0, 0, 0, bpp};
+
     const std::uint8_t *p = data.data()+(x+y*w)*bpp;
     for (int i=bpp; i--; ret.bgra[i] = p[i]);
     return ret;
@@ -41,11 +44,11 @@ void TGAImage::flip_vertically() {
                 std::swap(data[(i+j*w)*bpp+b], data[(i+(h-1-j)*w)*bpp+b]);
 }
 
-int TGAImage::width() const {
+unsigned int TGAImage::width() const {
     return w;
 }
 
-int TGAImage::height() const {
+unsigned int TGAImage::height() const {
     return h;
 }
 
