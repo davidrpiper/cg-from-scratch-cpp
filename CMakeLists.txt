@@ -9,4 +9,8 @@ add_executable(cg_from_scratch_cpp main.cpp
         TGA/TGAColor.h
         TGA/TGAColor.cpp
         Canvas.cpp
-        Canvas.h)
+        Canvas.h
+        Camera.cpp
+        Camera.h
+        math/math.h
+)
