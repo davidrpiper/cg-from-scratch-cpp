@@ -12,11 +12,17 @@
 class Canvas {
 public:
     Canvas();
-    Canvas(unsigned int width, unsigned int height);
+    Canvas(int width, int height);
     ~Canvas();
 
-    unsigned int width() const;
-    unsigned int height() const;
+    int width() const;
+    int height() const;
+
+    int lowestValidX() const;
+    int highestValidX() const;
+
+    int lowestValidY() const;
+    int highestValidY() const;
 
      /**
       * The Canvas co-ordinate system is Cartesian: (x, y) = (0, 0) is the horizontal and vertical center of the canvas.

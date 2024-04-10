@@ -18,7 +18,7 @@ public:
      * @param viewportDistance distance of viewport from camera in Scene coordinates
      * @param viewportWidthHeight dimensions of viewport in Scene coordinates
      */
-    Camera(Vec3 position, Vec3 facing, unsigned int viewportDistance, uVec2 viewportWidthHeight);
+    Camera(Vec3 position, Vec3 facing, int viewportDistance, Vec2 viewportWidthHeight);
 
     /**
      * Default camera at (0, 0, 0), facing directly down the positive z-axis (0, 0, 1), with a viewport
@@ -28,7 +28,7 @@ public:
 
     Vec3 getPosition() const;
     Vec3 getFacing() const;
-    uVec2 getViewportDimensions() const;
+    Vec2 getViewportDimensions() const;
 
     // Also defines the projection plane (z = d) for the default camera above.
     unsigned int getViewPortDistance() const;
@@ -36,7 +36,7 @@ public:
 private:
     Vec3 position;
     Vec3 facing;
-    uVec2 viewportDimensions;
+    Vec2 viewportDimensions;
     unsigned int viewportDistance;
 };
 

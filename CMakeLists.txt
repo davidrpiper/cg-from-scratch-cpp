@@ -13,4 +13,6 @@ add_executable(cg_from_scratch_cpp main.cpp
         Camera.cpp
         Camera.h
         math/math.h
+        Sphere.cpp
+        Sphere.h
 )

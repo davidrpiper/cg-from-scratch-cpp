@@ -8,7 +8,7 @@
 
 Canvas::Canvas() : Canvas(1920, 1080) { }
 
-Canvas::Canvas(unsigned int width, unsigned int height) {
+Canvas::Canvas(int width, int height) {
     image = TGAImage(width, height, TGAImage::Format::RGB);
 }
 
@@ -31,10 +31,28 @@ void Canvas::putPixel(const int x, const int y, const TGAColor &color) {
     image.set(imageX, imageY, color);
 }
 
-unsigned int Canvas::width() const {
+int Canvas::width() const {
     return image.width();
 }
 
-unsigned int Canvas::height() const {
+int Canvas::height() const {
     return image.height();
+}
+
+int Canvas::lowestValidX() const {
+    int width = this->width();
+    return -width / 2;
+}
+
+int Canvas::highestValidX() const {
+    return (this->width() / 2) - 1;
+}
+
+int Canvas::lowestValidY() const {
+    int height = this->height();
+    return -height / 2;
+}
+
+int Canvas::highestValidY() const {
+    return (this->height() / 2) - 1;
 }
