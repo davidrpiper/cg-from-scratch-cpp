@@ -37,7 +37,15 @@ struct TGAImage {
     void flip_horizontally();
     void flip_vertically();
     TGAColor get(const unsigned int x, const unsigned int y) const;
-    void set(const unsigned int x, const unsigned int y, const TGAColor &c);
+    /**
+     * Image pixels are set in Screen coordinates: (0, 0) is the top-left pixel.
+     * Does nothing if a pixel outside the width and height of the image is specified.
+     *
+     * @param x coordinates go from [0 -> width-1] from left to right
+     * @param y coordinates go from [0 -> height-1] from top to bottom
+     * @param color to paint the pixel at the given Screen coordinates.
+     */
+    void set(const unsigned int x, const unsigned int y, const TGAColor &color);
     unsigned int width()  const;
     unsigned int height() const;
 private:

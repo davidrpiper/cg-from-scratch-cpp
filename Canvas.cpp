@@ -14,17 +14,27 @@ Canvas::Canvas(unsigned int width, unsigned int height) {
 
 Canvas::~Canvas() = default;
 
-void Canvas::saveImage(const std::string &filename) {
+void Canvas::saveImage(const std::string &filename) const {
     auto finalName = filename.find(".tga") == std::string::npos ? filename + ".tga" : filename;
     image.write_tga_file(finalName);
 }
 
-void Canvas::saveImage(const char *filename) {
-    std::string str(filename);
-    saveImage(str);
+void Canvas::saveImage(const char *filename) const {
+    saveImage(std::string(filename));
 }
 
-void Canvas::putPixel(const unsigned int x, const unsigned int y, const TGAColor &color) {
-    // TODO Coordinate transformation here!
-    image.set(x, y, color);
+void Canvas::putPixel(const int x, const int y, const TGAColor &color) {
+    // Transform cartesian Canvas coordinates to screen/image coordinates: (0, 0) in top-left
+    unsigned int imageX = (image.width() / 2) + x;
+    unsigned int imageY = (image.height() / 2) - y;
+
+    image.set(imageX, imageY, color);
+}
+
+unsigned int Canvas::width() const {
+    return image.width();
+}
+
+unsigned int Canvas::height() const {
+    return image.height();
 }

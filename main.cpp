@@ -1,4 +1,3 @@
-#include "TGA/TGAImage.h"
 #include "TGA/TGAColor.h"
 #include "Canvas.h"
 
